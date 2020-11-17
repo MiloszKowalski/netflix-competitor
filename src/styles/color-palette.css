@@ -1,0 +1,9 @@
+:root {
+  --main-light: #ffffff;
+  --secondary-light: #8f7e83;
+
+  --main-dark: #151518;
+  --secondary-dark: #53535b;
+
+  --standard-shadow: rgba(0, 0, 0, 0.1);
+}
