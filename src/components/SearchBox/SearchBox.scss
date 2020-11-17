@@ -1,0 +1,71 @@
+.SearchBox {
+  color: var(--main-light);
+  margin: 0 15px;
+  position: relative;
+  @apply flex;
+  @apply items-center;
+
+  & svg {
+    stroke: var(--main-light);
+    stroke-width: 3px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: block;
+    z-index: 5;
+    position: absolute;
+    transition: transform 0.5s;
+  }
+
+  & input {
+    border-radius: 100vw;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    max-width: 0;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    opacity: 0;
+    transition: transform 0.5s, max-width 0.5s, opacity 0.5s;
+    transform: translateX(0);
+
+    &::placeholder {
+      color: #8d8d8d;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.expanded {
+    & svg {
+      transform: translateX(calc(-20vw + 15px));
+    }
+
+    & input {
+      max-width: 60vw;
+      transform: translateX(-20vw);
+      border: 2px solid #323234;
+      background: black;
+      padding: 10px 15px;
+      padding-left: 45px;
+      opacity: 1;
+    }
+
+    @media screen and (min-width: 1024px) {
+      & svg {
+        transform: translateX(-235px);
+      }
+
+      & input {
+        max-width: 250px;
+        transform: translateX(-250px);
+      }
+    }
+  }
+}
