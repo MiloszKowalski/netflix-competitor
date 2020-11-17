@@ -1,0 +1,17 @@
+.ProfileDropdown {
+  @apply flex;
+  @apply flex-row;
+  @apply items-center;
+  cursor: pointer;
+
+  & svg {
+    @apply m-1;
+    @apply w-6;
+    @apply h-6;
+    stroke: #fff;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-right: 20px;
+  }
+}
