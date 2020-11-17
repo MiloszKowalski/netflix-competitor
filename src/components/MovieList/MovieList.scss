@@ -1,0 +1,14 @@
+.MovieList {
+  width: 100%;
+  height: 600px;
+  padding-top: 100px;
+  overflow: hidden;
+  background: linear-gradient(transparent 0%, var(--main-dark) 35%);
+
+  & h3 {
+    font-size: 1.8rem;
+    color: var(--main-light);
+    margin: 20px 0;
+    margin-left: 10%;
+  }
+}

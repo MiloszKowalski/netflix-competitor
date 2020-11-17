@@ -1,0 +1,97 @@
+.MovieSlider {
+  width: 100%;
+
+  .swiper-container {
+    width: 100%;
+  }
+
+  .swiper-wrapper {
+    width: 100%;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    color: white;
+    height: 100%;
+    font-weight: bold;
+    top: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100px;
+      height: 65%;
+      background: rgba(0,0,0,0.7);
+      top: 18%;
+      z-index: -1;
+      opacity: 1;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+
+    &.swiper-button-disabled {
+      &::before {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    &::after {
+      transition: transform 0.25s;
+    }
+
+    &:hover::after {
+      transform: scale(1.25);
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+    padding: 0 35px;
+
+    &::before {
+      left: -140px;
+      box-shadow: 20px 0px 50px 70px rgba(0,0,0,0.9);
+    }
+  }
+
+  .swiper-button-next {
+    right: 0;
+    padding: 0 35px;
+
+    &::before {
+      right: -140px;
+      box-shadow: -20px 0px 50px 70px rgba(0,0,0,0.9);
+    }
+  }
+
+  .swiper-pagination {
+    transform: translateY(10px);
+  }
+
+  .swiper-pagination-bullet {
+    border-radius: 0;
+    width: 45px;
+    height: 4px;
+    margin: 10px 0;
+    background: var(--transparent-white);
+    transition: background 0.25s;
+
+    &.swiper-pagination-bullet-active {
+      background: var(--main-light);
+    }
+  }
+
+  .swiper-slide {
+    height: 355px;
+    background-color: white;
+    background-position: 50%;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 50px;
+    box-shadow: 0 15px 15px 10px var(--bold-shadow);
+
+    @media screen and (min-width: 768px) {
+      height: 355px;
+    }
+  }
+}
