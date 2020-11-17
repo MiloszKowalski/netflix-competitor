@@ -1,0 +1,40 @@
+.MenuIcon {
+  display: block;
+  margin-right: 20px;
+  cursor: pointer;
+
+  &--open {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  &__line {
+    height: 3px;
+    width: 25px;
+    margin: 5px 0;
+    background: white;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+
+  &--open &__line {
+    &:first-child {
+      transform: translateY(8px) rotate(-45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:last-child {
+      transform: translateY(-8px) rotate(45deg);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+
+    &--open {
+      display: none;
+    }
+  }
+}
