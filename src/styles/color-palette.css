@@ -4,6 +4,12 @@
 
   --main-dark: #151518;
   --secondary-dark: #53535b;
+  --very-dark: black;
+
+  --transparent-white: rgba(255, 255, 255, 0.25);
 
   --standard-shadow: rgba(0, 0, 0, 0.1);
+  --bold-shadow: rgba(0, 0, 0, 0.5);
+
+  --hover-color: #fe0d1e;
 }
