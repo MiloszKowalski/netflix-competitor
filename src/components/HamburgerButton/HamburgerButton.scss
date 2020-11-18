@@ -1,7 +1,7 @@
 .HamburgerButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
   height: 40px;
   width: 60px;
   background: var(--very-dark);

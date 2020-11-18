@@ -1,6 +1,6 @@
 .TopMenu {
   width: 100%;
-  position: fixed;
+  @apply fixed;
   z-index: 1000;
   top: 0;
   padding: 0 6%;
@@ -8,7 +8,6 @@
   @apply flex;
   @apply items-center;;
   justify-content: space-between;
-  background: none;
   transition: transform 0.5s;
   color: var(--secondary-light);
   background: transparent;
@@ -16,10 +15,10 @@
 
   &::after {
     content: '';
-    display: block;
-    visibility: hidden;
+    @apply block;
+    @apply invisible;
     opacity: 0;
-    position: absolute;
+    @apply absolute;
     width: 100%;
     height: 100%;
     left: 0;
@@ -31,7 +30,7 @@
 
   &.undocked {
     &::after {
-      visibility: visible;
+      @apply visible;
       opacity: 1;
     }
   }
@@ -46,16 +45,16 @@
   &__navigation-wrapper {
     width: max-content;
     @apply flex;
-    flex-direction: row-reverse;
+    @apply flex-row-reverse;
     @apply items-center;;
     justify-content: space-between;
   }
 
   @media screen and (min-width: 1024px) {
-    justify-content: start;
+    @apply justify-start;
 
     &__navigation-wrapper {
-      flex-direction: row;
+      @apply flex-row;
       justify-content: space-between;
       width: 100%;
     }

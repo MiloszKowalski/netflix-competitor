@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import { MovieContext } from 'contexts/MovieContext';
+
 import { ReactComponent as HeartIcon } from 'svg/icons/HeartIcon.svg';
 
 import './FavoriteButton.scss';
@@ -24,7 +25,8 @@ const FavoriteButton: React.FC<Props> = ({ id }) => {
 
 
   return (
-    <button className={`FavoriteButton ${isFavorite ? 'favorite' : ''}`} onClick={(e) => handleFavoriteClick(e)}>
+    <button className={`FavoriteButton ${isFavorite ? 'favorite' : ''}`}
+      onClick={ (e) => handleFavoriteClick(e) }>
       <HeartIcon />
     </button>
   )

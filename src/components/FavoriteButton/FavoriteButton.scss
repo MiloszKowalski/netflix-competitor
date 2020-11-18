@@ -1,5 +1,5 @@
 .FavoriteButton {
-  display: inline;
+  @apply inline;
   & svg {
     width: 25px;
     fill: var(--half-transparent-white);
@@ -15,7 +15,7 @@
   }
 
   @media screen and (min-width: 1024px) {
-    position: relative;
+    @apply relative;
     top: 8px;
   }
 }

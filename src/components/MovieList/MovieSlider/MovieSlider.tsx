@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
-import './MovieSlider.scss';
-
 import { Swiper, Slide } from 'react-dynamic-swiper';
 import 'react-dynamic-swiper/lib/styles.css'
 
 import FavoriteButton from 'components/FavoriteButton';
+
+import { MovieContext } from 'contexts/MovieContext';
+import { MovieInfo } from 'utils/apiHandler';
+
 import { ReactComponent as ZoomIcon } from 'svg/icons/ZoomIcon.svg';
 
-import { MovieInfo } from 'utils/apiHandler';
-import { MovieContext } from 'contexts/MovieContext';
+import './MovieSlider.scss';
 
 type Props = {
   movies: MovieInfo[]
@@ -92,7 +93,7 @@ const MovieSlider: React.FC<Props> = ({ movies }) => {
       pagination
       >
         {movies.map(movie => (
-          <Slide key={movie.id}>
+          <Slide key={ movie.id }>
             <div className="MovieSlider__card" style={{ backgroundImage: `url(${movie.imageUri})` }}>
               <div onClick={ () => openModal(movie.id) } className="details-prompt">
                 <ZoomIcon />

@@ -10,13 +10,13 @@
     margin-left: 7.5%;
 
     &::before {
-      display: inline-block;
+      @apply inline-block;
       margin-right: 15px;
     }
 
     &.rocket::before {
       content: url('/svg/icons/RocketIcon.svg');
-      position: relative;
+      @apply relative;
       top: 3px;
     }
 

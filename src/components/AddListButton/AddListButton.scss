@@ -6,9 +6,9 @@
   margin-left: 5px;
   font-weight: bold;
   font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  @apply flex;
+  @apply items-center;
+  @apply justify-evenly;
   background-color: var(--transparent-white);
   color: var(--main-light);
   @apply rounded-full;

@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 
+import MenuIcon from '../MenuIcon';
+
 import { TopMenuContext } from 'contexts/TopMenuContext';
-import MenuIcon from '../MenuIcon/MenuIcon';
+
 import './Navigation.scss';
 
 const Navigation: React.FC = () => {
@@ -9,11 +11,14 @@ const Navigation: React.FC = () => {
 
   function handleClick(): void {
     // Close the menu after clicking background shadow and navigating
-    if(isExpanded && window.innerWidth <= 1024) setIsExpanded(false);
+    if(isExpanded && window.innerWidth <= 1024) {
+      setIsExpanded(false);
+    }
 
     setTimeout(() => {
-      if(window.location.pathname !== '/') return;
-
+      if(window.location.pathname !== '/') {
+        return;
+      }
       if(window.scrollY === 0) {
         setIsDocked(true);
       }

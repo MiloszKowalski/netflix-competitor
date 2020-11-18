@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+
 import { TopMenuContext } from 'contexts/TopMenuContext';
+
 import './MenuIcon.scss';
 
 const MenuIcon: React.FC = () => {
@@ -20,12 +22,12 @@ const MenuIcon: React.FC = () => {
   }
 
   return (
-  <div className={`MenuIcon${isExpanded ? '--open' : ''}`}
-    onClick={ handleClick } id="expand-icon">
-      <div className="MenuIcon__line"></div>
-      <div className="MenuIcon__line"></div>
-      <div className="MenuIcon__line"></div>
-  </div>
+    <div className={`MenuIcon${isExpanded ? '--open' : ''}`}
+      onClick={ handleClick } id="expand-icon">
+        <div className="MenuIcon__line"></div>
+        <div className="MenuIcon__line"></div>
+        <div className="MenuIcon__line"></div>
+    </div>
   );
 }
 

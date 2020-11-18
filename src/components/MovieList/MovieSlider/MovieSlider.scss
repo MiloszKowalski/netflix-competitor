@@ -18,8 +18,8 @@
 
     &::before {
       content: '';
-      display: block;
-      position: absolute;
+      @apply block;
+      @apply absolute;
       width: 100px;
       height: 65%;
       background: rgba(0,0,0,0.7);
@@ -32,16 +32,16 @@
     &.swiper-button-disabled {
       &::before {
         opacity: 0;
-        visibility: hidden;
+        @apply invisible;
       }
     }
 
     &::after{
       content: '';
-      display: block;
+      @apply block;
       width: 100%;
       height: 100%;
-      position: absolute;
+      @apply absolute;
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: 80%;
@@ -88,7 +88,7 @@
   }
 
   .swiper-pagination-bullet {
-    border-radius: 0;
+    @apply rounded-none;
     width: 45px;
     height: 4px;
     margin: 10px 0;
@@ -105,7 +105,7 @@
     background-color: white;
     background-position: 50%;
     border-radius: 10px;
-    display: inline-block;
+    @apply inline-block;
     margin-bottom: 50px;
     box-shadow: 0 15px 15px 10px var(--bold-shadow);
     overflow: hidden;
@@ -131,13 +131,13 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      visibility: hidden;
+      @apply invisible;
       transition: opacity 0.25s, visibility 0.25s;
       background-color: var(--bold-shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      @apply flex;
+      @apply items-center;
+      @apply justify-center;
+      @apply relative;
 
       & > svg {
         width: 50px;
@@ -148,12 +148,12 @@
     &:hover {
       & .details-prompt {
         opacity: 1;
-        visibility: visible;
+        @apply visible;
       }
     }
 
     & .cornered {
-      position: absolute;
+      @apply absolute;
       top: 30px;
       right: 30px;
     }

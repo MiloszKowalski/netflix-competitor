@@ -4,8 +4,9 @@ import HamburgerButton from 'components/HamburgerButton';
 import MultiSelectDropdown from 'components/MultiSelectDropdown';
 import RecommendedForYouButton from 'components/RecommendedForYouButton';
 
-import './RecomendationFilters.scss';
 import { MovieContext } from 'contexts/MovieContext';
+
+import './RecomendationFilters.scss';
 
 const RecomendationFilters: React.FC = () => {
   const { availableGenres } = useContext(MovieContext);

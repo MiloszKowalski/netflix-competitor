@@ -1,40 +1,40 @@
 import React, { Component, createContext } from 'react';
 
 type topMenuContext = {
-  isExpanded: boolean,
   isDocked: boolean,
-  setIsExpanded: (value: boolean) => void,
-  setIsDocked: (value: boolean) => void
+  isExpanded: boolean,
+  setIsDocked: (value: boolean) => void,
+  setIsExpanded: (value: boolean) => void
 }
 
 const initialState = {
-  isExpanded: false,
-  isDocked: true
+  isDocked: true,
+  isExpanded: false
 }
 
 export const TopMenuContext = createContext<topMenuContext>({
   ...initialState,
-  setIsExpanded: () => { },
-  setIsDocked: () => { }
+  setIsDocked: () => { },
+  setIsExpanded: () => { }
 });
 
 class TopMenuContextProvider extends Component {
   state = initialState;
 
-  setIsExpanded = (value: boolean) => {
-    this.setState({ ...this.state, isExpanded: value });
-  }
-
   setIsDocked = (value: boolean) => {
     this.setState({ ...this.state, isDocked: value });
+  }
+
+  setIsExpanded = (value: boolean) => {
+    this.setState({ ...this.state, isExpanded: value });
   }
 
   render() {
     return (
       <TopMenuContext.Provider value={{
         ...this.state,
-        setIsExpanded: this.setIsExpanded,
-        setIsDocked: this.setIsDocked
+        setIsDocked: this.setIsDocked,
+        setIsExpanded: this.setIsExpanded
       }}>
         { this.props.children }
       </TopMenuContext.Provider>

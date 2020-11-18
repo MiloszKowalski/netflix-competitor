@@ -1,10 +1,12 @@
 import React from 'react';
 
 import Footer from 'components/Footer';
-import Home from 'views/Home';
 import Modal from 'components/Modal';
-import MovieContextProvider from 'contexts/MovieContext';
 import TopMenu from 'components/TopMenu';
+
+import Home from 'views/Home';
+
+import MovieContextProvider from 'contexts/MovieContext';
 import TopMenuContextProvider from 'contexts/TopMenuContext';
 
 function App() {

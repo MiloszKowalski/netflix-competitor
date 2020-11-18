@@ -41,7 +41,8 @@ const Home: React.FC = () => {
       <RecomendationFilters />
       <FeaturedMovie />
         <MovieList heading="Top 100" icon="rocket" movies={ filteredMovies } />
-        { favorites.length && <MovieList heading="Your favorites" icon="heart" movies={ favoriteMovies } />}
+        { favorites.length &&
+        <MovieList heading="Your favorites" icon="heart" movies={ favoriteMovies } />}
     </main>
   )
 }

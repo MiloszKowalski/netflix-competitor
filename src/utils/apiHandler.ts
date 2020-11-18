@@ -42,7 +42,9 @@ export function getMovieListing(): MovieInfo[] | any {
       if(response.status !== 200 || !response.data) {
         return [];
       }
-      resolve(convertToMovieType(response.data.feed.entry));
+
+      const movies = convertToMovieType(response.data.feed.entry);
+      resolve(movies);
     })
     .catch((err) => {
       console.log(err);

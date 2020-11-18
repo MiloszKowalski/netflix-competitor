@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ProfilePicture from 'img/profile.png';
+
 import { ReactComponent as ArrowDownIcon } from 'svg/icons/ArrowDownIcon.svg';
 
 import './ProfileDropdown.scss';

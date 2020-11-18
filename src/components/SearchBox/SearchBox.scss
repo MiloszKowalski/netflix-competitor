@@ -1,7 +1,7 @@
 .SearchBox {
   color: var(--main-light);
   margin: 0 15px;
-  position: relative;
+  @apply relative;
   @apply flex;
   @apply items-center;
 
@@ -11,14 +11,14 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    display: block;
+    @apply block;
     z-index: 5;
-    position: absolute;
+    @apply absolute;
     transition: transform 0.5s;
   }
 
   & input {
-    border-radius: 100vw;
+    @apply rounded-full;
     background: transparent;
     border: none;
     font-size: 0.9rem;
@@ -27,7 +27,7 @@
     font-family: 'Roboto', sans-serif;
     max-width: 0;
     height: 40px;
-    position: absolute;
+    @apply absolute;
     top: -20px;
     opacity: 0;
     transition: transform 0.5s, max-width 0.5s, opacity 0.5s;

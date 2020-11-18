@@ -12,7 +12,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="Footer">
       <nav className="Footer__navigation">
-        <div className="Footer__navigation__logo"><LonflixIcon /></div>
+        <div className="Footer__navigation__logo">
+          <LonflixIcon />
+        </div>
         <ul>
           <li><a href="/">Sound and subtitles</a></li>
           <li><a href="/">Media center</a></li>
@@ -37,10 +39,26 @@ const Footer: React.FC = () => {
       </nav>
       <div className="Footer__social-media">
         <ul>
-          <li><a href="https://facebook.com" target="_blank" rel="noreferrer"><FacebookIcon /></a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noreferrer"><InstagramIcon /></a></li>
-          <li><a href="https://twitter.com" target="_blank" rel="noreferrer"><TwitterIcon /></a></li>
-          <li><a href="https://youtube.com" target="_blank" rel="noreferrer"><YouTubeIcon /></a></li>
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              <FacebookIcon />
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+              <InstagramIcon />
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+              <TwitterIcon />
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <YouTubeIcon />
+            </a>
+          </li>
         </ul>
       </div>
     </footer>

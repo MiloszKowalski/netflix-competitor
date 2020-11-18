@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useContext, useCallback } from 'react';
 
+import FavoriteButton from 'components/FavoriteButton';
+
+import { MovieContext } from 'contexts/MovieContext';
+
 import { ReactComponent as CloseIcon } from 'svg/icons/CloseIcon.svg';
 
-import FavoriteButton from 'components/FavoriteButton';
-import { MovieContext } from 'contexts/MovieContext';
 import './Modal.scss';
 
 const Modal: React.FC = () => {
@@ -15,8 +17,7 @@ const Modal: React.FC = () => {
       // Prevent glitchy jumping appearance when hiding the scrollbar
       document.body.style.marginRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
       document.body.style.overflow = 'hidden';
-    }
-    else {
+    } else {
       // Wait for the transition to finish
       setTimeout(() => {
         modal.current?.scrollTo(0,0);
@@ -41,8 +42,8 @@ const Modal: React.FC = () => {
   }, [handleKeyPress]);
 
   return (
-    <div onClick={closeModal} className={`modal-wrapper ${isModalOpen ? 'visible' : ''}`}>
-      <article onClick={(e) => e.stopPropagation()} className="Modal">
+    <div onClick={ closeModal } className={ `modal-wrapper ${isModalOpen ? 'visible' : ''}` }>
+      <article onClick={ (e) => e.stopPropagation() } className="Modal">
         <header className="Modal__header">
           <div>
             <img className="Modal__thumbnail" src={ currentMovie.imageUri } alt=""/>

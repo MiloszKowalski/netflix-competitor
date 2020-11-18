@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from 'react';
 
 import { MovieContext } from 'contexts/MovieContext';
+
 import { ReactComponent as SearchIcon } from 'svg/icons/SearchIcon.svg';
 
 import './SearchBox.scss';
@@ -11,13 +12,17 @@ const SearchBox: React.FC = () => {
   let { searchFilter, setSearchFilter } = useContext(MovieContext);
 
   function expandSearch() {
-    if (!inputRef.current) return;
+    if (!inputRef.current) {
+      return;
+    }
     setExpanded(true);
     inputRef.current.focus();
   }
 
   function hideSearch() {
-    if (!inputRef.current) return;
+    if (!inputRef.current) {
+      return;
+    }
     if (!inputRef.current.value.length) {
       setExpanded(false);
     }

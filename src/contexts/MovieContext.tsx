@@ -5,22 +5,22 @@ import { MovieInfo } from 'utils/apiHandler';
 const favoritesKey = 'favorite';
 
 type movieContext = {
-  isModalOpen: false,
-  currentMovie: MovieInfo,
-  movies: MovieInfo[],
-  searchFilter: string,
   availableGenres: string[],
+  currentMovie: MovieInfo,
   enabledGenres: string[],
   favorites: string[],
   isLoading: boolean,
+  isModalOpen: false,
+  movies: MovieInfo[],
+  searchFilter: string,
+  closeModal: () => void,
+  initFavorites: () => void,
+  openModal: (id: string) => void,
+  setIsLoading: (value: boolean) => void
   setSearchFilter: (value: string) => void,
+  toggleFavorite: (id: string) => void,
   toggleGenre: (name: string) => void,
   updateMovieList: (data: MovieInfo[]) => void,
-  openModal: (id: string) => void,
-  closeModal: () => void,
-  toggleFavorite: (id: string) => void,
-  initFavorites: () => void,
-  setIsLoading: (value: boolean) => void
 }
 
 const initialMovie: MovieInfo = {
@@ -36,22 +36,22 @@ const initialMovie: MovieInfo = {
 }
 
 let initialState: movieContext = {
-  isModalOpen: false,
-  currentMovie: initialMovie,
-  movies: [],
-  searchFilter: '',
   availableGenres: [],
+  currentMovie: initialMovie,
   enabledGenres: [],
   favorites: [],
   isLoading: true,
-  setSearchFilter: () => { },
-  toggleGenre: () => { },
-  updateMovieList: () => { },
-  openModal: () => { },
+  isModalOpen: false,
+  movies: [],
+  searchFilter: '',
   closeModal: () => { },
-  toggleFavorite: () => { },
+  openModal: () => { },
   initFavorites: () => { },
-  setIsLoading: () => { }
+  setIsLoading: () => { },
+  setSearchFilter: () => { },
+  toggleFavorite: () => { },
+  toggleGenre: () => { },
+  updateMovieList: () => { }
 }
 
 export const MovieContext = createContext<movieContext>({
@@ -61,41 +61,37 @@ export const MovieContext = createContext<movieContext>({
 class MovieContextProvider extends Component {
   state = initialState;
 
-  setSearchFilter = (value: string) => {
-    this.setState({ ...this.state, searchFilter: value });
+  closeModal = () => {
+    this.setState({ ...this.state, isModalOpen: false });
   }
 
-  toggleGenre = (name: string) => {
-    let { enabledGenres } = this.state;
+  initFavorites = () => {
+    let favorites = localStorage.getItem(favoritesKey);
 
-    if (enabledGenres.findIndex(x => x === name) === -1) {
-      enabledGenres.push(name);
-    } else {
-      enabledGenres.splice(enabledGenres.indexOf(name), 1);
+    if (favorites === null) {
+      favorites = '';
+      localStorage.setItem(favoritesKey, favorites);
     }
 
-    this.setState({ ...this.state, enabledGenres });
-  }
-
-  updateMovieList = (movies: MovieInfo[]) => {
-    this.setState({ ...this.state,  movies });
-
-    const genres = movies.map(x => x.category);
-    const genresSet = Array.from(new Set(genres));
-    this.setState({ ...this.state, availableGenres: genresSet });
-    this.setIsLoading(false);
+    this.setState({ ...this.state, favorites: favorites });
   }
 
   openModal = (id: string) => {
     const movieInfo = this.state.movies.find(x => x.id === id);
 
-    if (!movieInfo) return;
+    if (!movieInfo) {
+      return;
+    }
 
     this.setState({ ...this.state, currentMovie: movieInfo, isModalOpen: true });
   }
 
-  closeModal = () => {
-    this.setState({ ...this.state, isModalOpen: false });
+  setIsLoading = (value: boolean) => {
+    this.setState({ ...this.state, isLoading: value });
+  }
+
+  setSearchFilter = (value: string) => {
+    this.setState({ ...this.state, searchFilter: value });
   }
 
   toggleFavorite = (id: string) => {
@@ -119,33 +115,39 @@ class MovieContextProvider extends Component {
     localStorage.setItem(favoritesKey, newFavorites);
   }
 
-  initFavorites = () => {
-    let favorites = localStorage.getItem(favoritesKey);
+  toggleGenre = (name: string) => {
+    let { enabledGenres } = this.state;
 
-    if (favorites === null) {
-      favorites = '';
-      localStorage.setItem(favoritesKey, favorites);
+    if (enabledGenres.findIndex(x => x === name) === -1) {
+      enabledGenres.push(name);
+    } else {
+      enabledGenres.splice(enabledGenres.indexOf(name), 1);
     }
 
-    this.setState({ ...this.state, favorites: favorites });
+    this.setState({ ...this.state, enabledGenres });
   }
 
-  setIsLoading = (value: boolean) => {
-    this.setState({ ...this.state, isLoading: value });
+  updateMovieList = (movies: MovieInfo[]) => {
+    this.setState({ ...this.state,  movies });
+
+    const genres = movies.map(x => x.category);
+    const genresSet = Array.from(new Set(genres));
+    this.setState({ ...this.state, availableGenres: genresSet });
+    this.setIsLoading(false);
   }
 
   render() {
     return (
       <MovieContext.Provider value={{
         ...this.state,
-        setSearchFilter: this.setSearchFilter,
-        toggleGenre: this.toggleGenre,
-        updateMovieList: this.updateMovieList,
-        openModal: this.openModal,
         closeModal: this.closeModal,
-        toggleFavorite: this.toggleFavorite,
         initFavorites: this.initFavorites,
-        setIsLoading: this.setIsLoading
+        openModal: this.openModal,
+        setIsLoading: this.setIsLoading,
+        setSearchFilter: this.setSearchFilter,
+        toggleFavorite: this.toggleFavorite,
+        toggleGenre: this.toggleGenre,
+        updateMovieList: this.updateMovieList
       }}>
         { this.props.children }
       </MovieContext.Provider>

@@ -20,7 +20,7 @@ const MultiSelectDropdown: React.FC<Props> = ({ title, options }) => {
       </button>
       { expanded && <ul className="MultiSelectDropdown__list">
         {options.map(x => (
-          <MultiSelectOption key={x} name={x} />
+          <MultiSelectOption key={ x } name={ x } />
         ))}
       </ul> }
     </div>

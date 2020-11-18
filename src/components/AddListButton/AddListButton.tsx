@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ReactComponent as PlusIcon } from 'svg/icons/PlusIcon.svg';
+
 import './AddListButton.scss';
 
 const AddListButton: React.FC = () => {

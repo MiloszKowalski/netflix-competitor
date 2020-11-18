@@ -1,8 +1,9 @@
 import React from 'react';
 
 import AddListButton from 'components/AddListButton';
-import MovieHeaderImage from 'img/movie-header.png';
 import WatchButton from 'components/WatchButton';
+
+import MovieHeaderImage from 'img/movie-header.png';
 
 import './FeaturedMovie.scss';
 

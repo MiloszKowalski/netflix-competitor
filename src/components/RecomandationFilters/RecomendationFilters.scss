@@ -1,11 +1,11 @@
 .RecomendationFilters {
   margin: 0 6%;
-  display: flex;
-  flex-direction: column;
+  @apply flex;
+  @apply flex-col;
 
   & > div {
-    display: flex;
-    align-items: center;
+    @apply flex;
+    @apply items-center;
     margin: 0 auto;
   }
 
@@ -16,7 +16,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    @apply flex-row;
     justify-content: space-between;
 
     & > div {

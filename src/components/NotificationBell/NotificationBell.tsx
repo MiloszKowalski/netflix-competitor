@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './NotificationBell.scss';
 
 import { ReactComponent as NotificationIcon } from 'svg/icons/NotificationIcon.svg';
+
+import './NotificationBell.scss';
 
 const NotificationBell: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
