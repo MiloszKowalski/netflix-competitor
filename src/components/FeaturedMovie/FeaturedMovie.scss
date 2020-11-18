@@ -1,0 +1,72 @@
+.FeaturedMovie {
+  width: 100%;
+  padding: 10px;
+
+  &__image {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  &__description {
+    color: var(--main-light);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 15px 0;
+    text-align: center;
+
+  }
+
+  &__button-wrapper {
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 200px;
+
+    &__image {
+      width: 40%;
+    }
+
+    &__description {
+      width: 40%;
+      margin: 15px auto;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 60%;
+    margin: 0 5.5%;
+    margin-top: 100px;
+
+    &__image {
+      width: 60%;
+      margin: 0;
+    }
+
+    &__description {
+      color: var(--main-light);
+      font-size: 1.4rem;
+      line-height: 1.75;
+      margin: 15px 0;
+      width: 60%;
+      text-align: left;
+    }
+
+    &__button-wrapper {
+      @apply justify-start;
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    &__image {
+      width: 30%;
+    }
+
+    &__description {
+      width: 45%;
+      margin: 0;
+    }
+  }
+}

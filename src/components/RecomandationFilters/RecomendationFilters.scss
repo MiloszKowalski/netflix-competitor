@@ -1,0 +1,30 @@
+.RecomendationFilters {
+  margin: 0 6%;
+  @apply flex;
+  @apply flex-col;
+
+  & > div {
+    @apply flex;
+    @apply items-center;
+    margin: 0 auto;
+  }
+
+  h2 {
+    color: var(--main-light);
+    font-size: 2rem;
+    margin-right: 15px;
+  }
+
+  @media screen and (min-width: 768px) {
+    @apply flex-row;
+    justify-content: space-between;
+
+    & > div {
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin: 0 6%;
+  }
+}

@@ -1,0 +1,16 @@
+:root {
+  --main-light: #ffffff;
+  --secondary-light: #8f7e83;
+
+  --main-dark: #151518;
+  --secondary-dark: #53535b;
+  --very-dark: black;
+
+  --transparent-white: rgba(255, 255, 255, 0.25);
+  --half-transparent-white: rgba(255, 255, 255, 0.5);
+
+  --standard-shadow: rgba(0, 0, 0, 0.1);
+  --bold-shadow: rgba(0, 0, 0, 0.5);
+
+  --hover-color: #fe0d1e;
+}

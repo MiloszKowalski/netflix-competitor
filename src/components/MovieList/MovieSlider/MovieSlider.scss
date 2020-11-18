@@ -1,0 +1,161 @@
+.MovieSlider {
+  width: 100%;
+
+  .swiper-container {
+    width: 100%;
+  }
+
+  .swiper-wrapper {
+    width: 100%;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    color: white;
+    height: 100%;
+    font-weight: bold;
+    top: 0;
+    background-image: none;
+
+    &::before {
+      content: '';
+      @apply block;
+      @apply absolute;
+      width: 100px;
+      height: 65%;
+      background: rgba(0,0,0,0.7);
+      top: 18%;
+      z-index: -1;
+      opacity: 1;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+
+    &.swiper-button-disabled {
+      &::before {
+        opacity: 0;
+        @apply invisible;
+      }
+    }
+
+    &::after{
+      content: '';
+      @apply block;
+      width: 100%;
+      height: 100%;
+      @apply absolute;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 80%;
+      transition: background-size 0.25s;
+    }
+
+    &:hover::after {
+      background-size: 100%;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+    padding: 0 35px;
+
+    &::after {
+      background-image: url('/svg/icons/ArrowLeftIcon.svg');
+      left: -10%;
+    }
+
+    &::before {
+      left: -140px;
+      box-shadow: 20px 0px 50px 70px rgba(0,0,0,0.9);
+    }
+  }
+
+  .swiper-button-next {
+    right: 0;
+    padding: 0 35px;
+
+    &::after {
+      background-image: url('/svg/icons/ArrowRightIcon.svg');
+      right: -10%;
+    }
+
+    &::before {
+      right: -140px;
+      box-shadow: -20px 0px 50px 70px rgba(0,0,0,0.9);
+    }
+  }
+
+  .swiper-pagination {
+    transform: translateY(10px);
+  }
+
+  .swiper-pagination-bullet {
+    @apply rounded-none;
+    width: 45px;
+    height: 4px;
+    margin: 10px 0;
+    background: var(--transparent-white);
+    transition: background 0.25s;
+
+    &.swiper-pagination-bullet-active {
+      background: var(--main-light);
+    }
+  }
+
+  .swiper-slide {
+    height: 355px;
+    background-color: white;
+    background-position: 50%;
+    border-radius: 10px;
+    @apply inline-block;
+    margin-bottom: 50px;
+    box-shadow: 0 15px 15px 10px var(--bold-shadow);
+    overflow: hidden;
+    transition: transform 0.25s;
+
+    &:hover {
+      transform: scale(1.05) translateY(10px);
+    }
+
+    @media screen and (min-width: 768px) {
+      height: 355px;
+    }
+  }
+
+  &__card {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    & .details-prompt {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      @apply invisible;
+      transition: opacity 0.25s, visibility 0.25s;
+      background-color: var(--bold-shadow);
+      @apply flex;
+      @apply items-center;
+      @apply justify-center;
+      @apply relative;
+
+      & > svg {
+        width: 50px;
+        fill: var(--main-light);
+      }
+    }
+
+    &:hover {
+      & .details-prompt {
+        opacity: 1;
+        @apply visible;
+      }
+    }
+
+    & .cornered {
+      @apply absolute;
+      top: 30px;
+      right: 30px;
+    }
+  }
+}

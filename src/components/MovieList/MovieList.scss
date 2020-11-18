@@ -1,0 +1,27 @@
+.MovieList {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(transparent 0%, var(--main-dark) 35%);
+
+  & h3 {
+    font-size: 2rem;
+    color: var(--main-light);
+    margin: 45px 0;
+    margin-left: 7.5%;
+
+    &::before {
+      @apply inline-block;
+      margin-right: 15px;
+    }
+
+    &.rocket::before {
+      content: url('/svg/icons/RocketIcon.svg');
+      @apply relative;
+      top: 3px;
+    }
+
+    &.heart::before {
+      content: url('/svg/icons/HeartIcon.svg');
+    }
+  }
+}

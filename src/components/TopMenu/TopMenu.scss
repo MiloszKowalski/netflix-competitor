@@ -1,0 +1,62 @@
+.TopMenu {
+  width: 100%;
+  @apply fixed;
+  z-index: 1000;
+  top: 0;
+  padding: 0 6%;
+  left: 0;
+  @apply flex;
+  @apply items-center;;
+  justify-content: space-between;
+  transition: transform 0.5s;
+  color: var(--secondary-light);
+  background: transparent;
+  height: 110px;
+
+  &::after {
+    content: '';
+    @apply block;
+    @apply invisible;
+    opacity: 0;
+    @apply absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    box-shadow: 0 3px 5px 0px var(--standard-shadow);
+    z-index: -1;
+    background-color: var(--main-dark);
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+
+  &.undocked {
+    &::after {
+      @apply visible;
+      opacity: 1;
+    }
+  }
+
+  &__logo {
+    &__img {
+      height: 35px;
+      width: 100px;
+    }
+  }
+
+  &__navigation-wrapper {
+    width: max-content;
+    @apply flex;
+    @apply flex-row-reverse;
+    @apply items-center;;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: 1024px) {
+    @apply justify-start;
+
+    &__navigation-wrapper {
+      @apply flex-row;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

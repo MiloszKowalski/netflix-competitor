@@ -1,8 +1,15 @@
+@import './color-palette.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@use './font-import.scss';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  @apply antialiased;
+  background-color: var(--main-dark);
 }

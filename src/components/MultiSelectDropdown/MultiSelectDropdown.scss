@@ -1,0 +1,71 @@
+.MultiSelectDropdown {
+  &__button {
+    @apply block;
+    width: 150px;
+    height: 40px;
+    color: var(--main-light);
+    padding: 8px 35px;
+    font-size: 0.85rem;
+    border: 1px solid  var(--transparent-white);
+    @apply rounded-full;
+    background-color: var(--very-dark);
+    margin: 3px;
+    @apply relative;
+    background-image: url('/svg/icons/ArrowDownIcon.svg');
+    background-repeat: no-repeat;
+    background-size: 12%;
+    background-position: 90%;
+
+    &--option {
+      @extend .MultiSelectDropdown__button;
+      background-color: var(--half-transparent-white);
+      background-image: none;
+      border: none;
+      margin: 3px;
+      padding: 8px;
+      animation: fade-in 0.25s;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &:hover {
+        background-color: var(--main-dark);
+      }
+
+      &.active {
+        background-color: var(--main-light);
+        color: var(--very-dark);
+      }
+    }
+  }
+
+  &__list {
+    @apply absolute;
+    left: 0;
+    display: grid;
+    margin: 0 6%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  @media screen and (min-width: 1024px) {
+    @apply relative;
+
+    &__list {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 1fr;
+      margin: 0;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    @apply invisible;
+  }
+
+  to {
+    opacity: 1;
+    @apply visible;
+  }
+}

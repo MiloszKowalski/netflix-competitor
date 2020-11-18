@@ -1,0 +1,21 @@
+.HamburgerButton {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  height: 40px;
+  width: 60px;
+  background: var(--very-dark);
+  @apply rounded-full;
+  border: 1px solid  var(--transparent-white);
+  transition: border 0.25s;
+
+  &:hover {
+    border: 1px solid var(--main-light);
+  }
+
+  & svg {
+    width: 60%;
+    height: 60%;
+    stroke: var(--main-light);
+  }
+}

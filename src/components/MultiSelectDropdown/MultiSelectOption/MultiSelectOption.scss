@@ -1,0 +1,17 @@
+.MultiSelectDropdown {
+  &__button {
+    &--option {
+      background-color: var(--transparent-white);
+      background-image: none;
+      border: none;
+      margin: 3px;
+      animation: fade-in 0.25s;
+      transition: background-color 0.25s, color 0.25s;
+
+      &.active {
+        background-color: var(--main-light);
+        color: var(--very-dark);
+      }
+    }
+  }
+}

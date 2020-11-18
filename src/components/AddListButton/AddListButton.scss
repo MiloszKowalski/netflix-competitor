@@ -1,0 +1,37 @@
+.AddListButton {
+  height: 56px;
+  width: 185px;
+  padding: 0 35px;
+  margin: 20px 0;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  @apply flex;
+  @apply items-center;
+  @apply justify-evenly;
+  background-color: var(--transparent-white);
+  color: var(--main-light);
+  @apply rounded-full;
+  transition: background-color 0.25s, color 0.25s;
+
+  @media screen and (min-width: 1024px) {
+    margin: 45px 0;
+    margin-left: 20px;
+  }
+
+  & svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--main-light);
+    transition: fill 0.25s;
+  }
+
+  &:hover {
+    background-color: var(--main-light);
+    color: var(--very-dark);
+
+    & svg {
+      fill: var(--very-dark);
+    }
+  }
+}

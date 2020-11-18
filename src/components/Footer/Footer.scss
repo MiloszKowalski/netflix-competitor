@@ -1,0 +1,86 @@
+.Footer {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  @apply relative;
+  top: -5px;
+
+  &__navigation {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "logo" "one" "two" "three" "four";
+    font-size: 0.85rem;
+    line-height: 2.5;
+
+    & li {
+      text-align: center;
+
+      @media screen and (min-width: 1024px) {
+        text-align: left;
+      }
+    }
+
+    & li a {
+      color: var(--secondary-dark);
+      transition: color 0.25s;
+
+      &:hover {
+        color: var(--main-light);
+      }
+    }
+
+    &__logo {
+      margin: 0 auto;
+      grid-area: logo;
+
+      svg {
+        margin-top: 10px;
+        height: 80px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  &__social-media ul {
+    @apply flex;
+    margin: 50px auto;
+    width: min-content;
+    & li svg {
+      width: 34px;
+      height: 34px;
+      margin: 14px;
+      fill: var(--secondary-dark);
+      transition: fill 0.25s;
+
+      &:hover {
+        fill: var(--hover-color);
+      }
+    }
+  }
+
+  @media screen and (min-width: 480px) {
+    &__navigation {
+      grid-template-areas: "logo logo" "one two" "three four";
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &__navigation {
+      grid-template-areas: "logo logo logo logo" "one two three four";
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &__navigation {
+      grid-template-areas: "logo one two three four";
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    width: 80%;
+    padding: 50px;
+  }
+}

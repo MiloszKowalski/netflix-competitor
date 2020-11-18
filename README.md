@@ -1,4 +1,45 @@
-# Getting Started with Create React App
+# Łonflix - the true Netflix competitor
+
+...well, with a really low budget. In fact so low, that even the logo looks somewhat familiar...
+
+P.S. If you don't get the reference, take look at [this clip](https://www.youtube.com/watch?v=fXLKWoLnTdk) - 0:32 to be precise.
+
+# Tech stack
+
+The project was bootstrapped using Create React App, with the additional configuration for including Tailwind CSS and SCSS - this included installing `craco` to gain access to configuration files.
+I've also used `axios` for handling data fetching and `react-dynamic-swiper` for performant and accessible carousel.
+
+I've chosen the hardest possible difficulty - I'll let you judge if I met the requirements.
+
+## Features
+
+This app includes a basic layout from the PSD file (nearly pixel perfect), with some extras.
+
+### Search box
+
+When you start typing into the search box, you'll immediately see movies filtering on the 'Top 100' slider.
+
+### Filters
+
+There are also filters available, dynamically fetched from the iTunes API. When none of them are selected, all of the movies will be shown.
+
+### Movie details
+
+When you click any of the movies, a modal will pop up and show you the details of the movie, such as its title, author, or release date. There is also a link that will take you to the iTunes details page of the movie.
+
+### Favorites
+
+When you hover over the movies at the slider or when you open the details modal, you'll see a little heart icon. When you click it, the selected movie will be added to your favorites and placed in a newly created slider.
+Moreover, it persists between sessions - it's stored in `localStorage`.
+Favorites' slider is affected by neither the search nor the genre filters.
+
+### Responsive design
+
+It'll probably be worth noting that all of the design is responsive.
+The only problem is that when you resize the window, the slider may glitch. Quick refresh will solve the problem.
+I would probably be able to solve this issue, but it would take some time - as it was an issue on the library side of things - probably too much time for a demo project to be worth it.
+
+# Installation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
