@@ -1,6 +1,27 @@
 .Home {
-  margin-top: 105px;
-  background-color: red;
+  padding-top: 100px;
+  background-color: var(--main-dark);
   max-width: 100%;
   overflow: hidden;
+
+  background-image: url('/img/hero-desktop.png');
+  background-image:
+    -webkit-image-set(
+      url('/img/hero-desktop.png') 1x,
+      url('/img/hero-mobile.png') 2x
+    );
+  background-image:
+    image-set(
+      url('/img/hero-desktop.png') 1x,
+      url('/img/hero-mobile.png') 2x
+    );
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0 100px;
+
+  @media screen and (min-width: 1024px) {
+    background-size: 100%;
+    background-position: top;
+  }
 }
