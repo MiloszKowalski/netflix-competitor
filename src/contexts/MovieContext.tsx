@@ -1,32 +1,30 @@
 import React, { Component, createContext } from 'react';
-
-type Movie = {
-  title: string
-}
+import { MovieInfo } from 'utils/apiHandler';
 
 type movieContext = {
-  movies: Movie[],
+  movies: MovieInfo[],
   searchFilter: string,
   availableGenres: string[],
   enabledGenres: string[],
   setSearchFilter: (value: string) => void,
   getSearchFilter: () => void,
-  toggleGenre: (name: string) => void
+  toggleGenre: (name: string) => void,
+  updateMovieList: (data: MovieInfo[]) => void
 }
 
-const initialState = {
-  movies: [{title:''}],
+let initialState: movieContext = {
+  movies: [],
   searchFilter: '',
-  availableGenres: ['Action', 'Adventure', 'Animation', 'Biography',
-    'Crime', 'Comedy', 'Documentary', 'Drama'],
-  enabledGenres: ['']
+  availableGenres: [],
+  enabledGenres: [],
+  setSearchFilter: () => { },
+  getSearchFilter: () => { },
+  toggleGenre: () => { },
+  updateMovieList: () => { }
 }
 
 export const MovieContext = createContext<movieContext>({
-  ...initialState,
-  setSearchFilter: () => { },
-  getSearchFilter: () => { },
-  toggleGenre: () => {}
+  ...initialState
 });
 
 class MovieContextProvider extends Component {
@@ -50,6 +48,14 @@ class MovieContextProvider extends Component {
     this.setState({ ...this.state, enabledGenres});
   }
 
+  updateMovieList = (movies: MovieInfo[]) => {
+    this.setState({ ...this.state,  movies});
+
+    const genres = movies.map(x => x.category);
+    const genresSet = Array.from(new Set(genres));
+    this.setState({ ...this.state, availableGenres: genresSet});
+  }
+
 
   render() {
     return (
@@ -57,7 +63,8 @@ class MovieContextProvider extends Component {
         ...this.state,
         setSearchFilter: this.setSearchFilter,
         getSearchFilter: this.getSearchFilter,
-        toggleGenre: this.toggleGenre
+        toggleGenre: this.toggleGenre,
+        updateMovieList: this.updateMovieList
       }}>
         { this.props.children }
       </MovieContext.Provider>
