@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useContext, useCallback } from 'react';
 
 import { ReactComponent as CloseIcon } from 'svg/icons/CloseIcon.svg';
 
+import FavoriteButton from 'components/FavoriteButton';
 import { MovieContext } from 'contexts/MovieContext';
 import './Modal.scss';
 
@@ -56,6 +57,7 @@ const Modal: React.FC = () => {
                 <a href={ currentMovie.detailsPage }
                   target="_blank" rel="noreferrer">More info</a>
               </span>
+              <span><FavoriteButton id={ currentMovie.id } /></span>
             </h5>
           </div>
           <div className="Modal__close-icon" onClick={ () => closeModal() }>

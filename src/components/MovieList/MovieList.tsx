@@ -7,13 +7,15 @@ import { MovieInfo } from 'utils/apiHandler';
 import './MovieList.scss';
 
 type Props = {
-  movies: MovieInfo[];
+  icon: string,
+  heading: string,
+  movies: MovieInfo[]
 }
 
-const MovieList: React.FC<Props> = ({ movies }) => {
+const MovieList: React.FC<Props> = ({ icon, heading, movies }) => {
   return (
     <div className="MovieList">
-      <h3>Top 100</h3>
+      <h3 className={ icon }>{ heading }</h3>
       <MovieSlider movies={ movies } />
     </div>
   )

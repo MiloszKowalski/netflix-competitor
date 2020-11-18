@@ -1,5 +1,8 @@
 import React, { Component, createContext } from 'react';
+
 import { MovieInfo } from 'utils/apiHandler';
+
+const favoritesKey = 'favorite';
 
 type movieContext = {
   isModalOpen: false,
@@ -8,12 +11,15 @@ type movieContext = {
   searchFilter: string,
   availableGenres: string[],
   enabledGenres: string[],
+  favorites: string[],
   setSearchFilter: (value: string) => void,
   getSearchFilter: () => void,
   toggleGenre: (name: string) => void,
   updateMovieList: (data: MovieInfo[]) => void,
   openModal: (id: string) => void,
-  closeModal: () => void
+  closeModal: () => void,
+  toggleFavorite: (id: string) => void,
+  initFavorites: () => void
 }
 
 const initialMovie: MovieInfo = {
@@ -35,12 +41,15 @@ let initialState: movieContext = {
   searchFilter: '',
   availableGenres: [],
   enabledGenres: [],
+  favorites: [],
   setSearchFilter: () => { },
   getSearchFilter: () => { },
   toggleGenre: () => { },
   updateMovieList: () => { },
   openModal: () => { },
-  closeModal: () => { }
+  closeModal: () => { },
+  toggleFavorite: () => { },
+  initFavorites: () => { }
 }
 
 export const MovieContext = createContext<movieContext>({
@@ -88,6 +97,38 @@ class MovieContextProvider extends Component {
     this.setState({ ...this.state, isModalOpen: false });
   }
 
+  toggleFavorite = (id: string) => {
+    let favorites = localStorage.getItem(favoritesKey);
+
+    if (favorites === null) {
+      favorites = '';
+    }
+
+    const favArray = favorites.split(',');
+
+    if (favArray.find(x => x === id)) {
+      const index = favArray.findIndex(x => x===id);
+      favArray.splice(index, 1);
+    } else {
+      favArray.push(id);
+    }
+
+    const newFavorites = favArray.join(',');
+    this.setState({ ...this.state, favorites: newFavorites });
+    localStorage.setItem(favoritesKey, newFavorites);
+  }
+
+  initFavorites = () => {
+    let favorites = localStorage.getItem(favoritesKey);
+
+    if (favorites === null) {
+      favorites = '';
+      localStorage.setItem(favoritesKey, favorites);
+    }
+
+    this.setState({ ...this.state, favorites: favorites });
+  }
+
   render() {
     return (
       <MovieContext.Provider value={{
@@ -97,7 +138,9 @@ class MovieContextProvider extends Component {
         toggleGenre: this.toggleGenre,
         updateMovieList: this.updateMovieList,
         openModal: this.openModal,
-        closeModal: this.closeModal
+        closeModal: this.closeModal,
+        toggleFavorite: this.toggleFavorite,
+        initFavorites: this.initFavorites
       }}>
         { this.props.children }
       </MovieContext.Provider>

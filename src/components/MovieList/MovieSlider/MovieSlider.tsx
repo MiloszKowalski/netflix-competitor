@@ -4,7 +4,7 @@ import './MovieSlider.scss';
 import { Swiper, Slide } from 'react-dynamic-swiper';
 import 'react-dynamic-swiper/lib/styles.css'
 
-import { ReactComponent as HeartIcon } from 'svg/icons/HeartIcon.svg';
+import FavoriteButton from 'components/FavoriteButton';
 import { ReactComponent as ZoomIcon } from 'svg/icons/ZoomIcon.svg';
 
 import { MovieInfo } from 'utils/apiHandler';
@@ -96,7 +96,9 @@ const MovieSlider: React.FC<Props> = ({ movies }) => {
             <div className="MovieSlider__card" style={{ backgroundImage: `url(${movie.imageUri})` }}>
               <div onClick={ () => openModal(movie.id) } className="details-prompt">
                 <ZoomIcon />
-                <HeartIcon />
+                <div className="cornered">
+                  <FavoriteButton id={ movie.id } />
+                </div>
               </div>
             </div>
           </Slide>

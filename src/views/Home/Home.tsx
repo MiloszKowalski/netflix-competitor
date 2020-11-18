@@ -9,7 +9,10 @@ import { MovieContext } from 'contexts/MovieContext';
 import { getMovieListing, MovieInfo } from 'utils/apiHandler';
 
 const Home: React.FC = () => {
-  const { updateMovieList, movies, searchFilter, enabledGenres } = useContext(MovieContext);
+  const {
+    updateMovieList, initFavorites, favorites,
+    movies, searchFilter, enabledGenres
+  } = useContext(MovieContext);
 
   const filteredMovies = movies.filter(x => {
     const movieIncludesName = x.name.toLowerCase().includes(searchFilter.toLowerCase());
@@ -21,19 +24,23 @@ const Home: React.FC = () => {
     return movieIncludesName && movieIncludesGenre;
   });
 
+  const favoriteMovies = movies.filter(x => favorites.includes(x.id));
+
   useEffect(() => {
     getMovieListing()
     .then((movies: MovieInfo[]) => {
       updateMovieList(movies);
+      initFavorites();
     });
-  }, [updateMovieList]);
+  }, [updateMovieList, initFavorites]);
 
 
   return (
     <main className="Home">
       <RecomendationFilters />
       <FeaturedMovie />
-      <MovieList movies={ filteredMovies } />
+      <MovieList heading="Top 100" icon="rocket" movies={ filteredMovies } />
+      { favorites.length && <MovieList heading="Your favorites" icon="heart" movies={ favoriteMovies } />}
     </main>
   )
 }
