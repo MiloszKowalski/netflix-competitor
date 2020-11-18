@@ -22,11 +22,18 @@
 
     &--option {
       @extend .MultiSelectDropdown__button;
-      background-color: var(--transparent-white);
+      background-color: var(--half-transparent-white);
       background-image: none;
       border: none;
       margin: 3px;
+      padding: 8px;
       animation: fade-in 0.25s;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &:hover {
+        background-color: var(--main-dark);
+      }
 
       &.active {
         background-color: var(--main-light);

@@ -12,7 +12,7 @@
   transition: transform 0.5s;
   color: var(--secondary-light);
   background: transparent;
-  height: 105px;
+  height: 110px;
 
   &::after {
     content: '';
@@ -38,7 +38,8 @@
 
   &__logo {
     &__img {
-      height: 30px;
+      height: 35px;
+      width: 100px;
     }
   }
 

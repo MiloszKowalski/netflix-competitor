@@ -2,7 +2,8 @@
   @apply flex;
 
   &__list {
-    margin: 10px 20px;
+    margin: 10px 0;
+    margin-left: 75px;
     list-style: none;
     @apply flex;
     flex-direction: row;
@@ -26,6 +27,8 @@
     &__item {
       margin: 0 40px;
       transition: color 0.25s;
+      font-size: 1.1rem;
+      color: var(--half-transparent-white);
 
       &:hover {
         color: var(--main-light);
@@ -47,7 +50,6 @@
     }
   }
 }
-
 
 .nav-shadow {
   opacity: 0;
@@ -72,7 +74,6 @@
       transform: translateX(-100%);
     }
   }
-
 
   .nav-shadow {
     opacity: 1;
