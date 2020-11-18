@@ -12,14 +12,15 @@ type movieContext = {
   availableGenres: string[],
   enabledGenres: string[],
   favorites: string[],
+  isLoading: boolean,
   setSearchFilter: (value: string) => void,
-  getSearchFilter: () => void,
   toggleGenre: (name: string) => void,
   updateMovieList: (data: MovieInfo[]) => void,
   openModal: (id: string) => void,
   closeModal: () => void,
   toggleFavorite: (id: string) => void,
-  initFavorites: () => void
+  initFavorites: () => void,
+  setIsLoading: (value: boolean) => void
 }
 
 const initialMovie: MovieInfo = {
@@ -42,14 +43,15 @@ let initialState: movieContext = {
   availableGenres: [],
   enabledGenres: [],
   favorites: [],
+  isLoading: true,
   setSearchFilter: () => { },
-  getSearchFilter: () => { },
   toggleGenre: () => { },
   updateMovieList: () => { },
   openModal: () => { },
   closeModal: () => { },
   toggleFavorite: () => { },
-  initFavorites: () => { }
+  initFavorites: () => { },
+  setIsLoading: () => { }
 }
 
 export const MovieContext = createContext<movieContext>({
@@ -63,8 +65,6 @@ class MovieContextProvider extends Component {
     this.setState({ ...this.state, searchFilter: value });
   }
 
-  getSearchFilter = () => this.state.searchFilter;
-
   toggleGenre = (name: string) => {
     let { enabledGenres } = this.state;
 
@@ -74,15 +74,16 @@ class MovieContextProvider extends Component {
       enabledGenres.splice(enabledGenres.indexOf(name), 1);
     }
 
-    this.setState({ ...this.state, enabledGenres});
+    this.setState({ ...this.state, enabledGenres });
   }
 
   updateMovieList = (movies: MovieInfo[]) => {
-    this.setState({ ...this.state,  movies});
+    this.setState({ ...this.state,  movies });
 
     const genres = movies.map(x => x.category);
     const genresSet = Array.from(new Set(genres));
-    this.setState({ ...this.state, availableGenres: genresSet});
+    this.setState({ ...this.state, availableGenres: genresSet });
+    this.setIsLoading(false);
   }
 
   openModal = (id: string) => {
@@ -129,18 +130,22 @@ class MovieContextProvider extends Component {
     this.setState({ ...this.state, favorites: favorites });
   }
 
+  setIsLoading = (value: boolean) => {
+    this.setState({ ...this.state, isLoading: value });
+  }
+
   render() {
     return (
       <MovieContext.Provider value={{
         ...this.state,
         setSearchFilter: this.setSearchFilter,
-        getSearchFilter: this.getSearchFilter,
         toggleGenre: this.toggleGenre,
         updateMovieList: this.updateMovieList,
         openModal: this.openModal,
         closeModal: this.closeModal,
         toggleFavorite: this.toggleFavorite,
-        initFavorites: this.initFavorites
+        initFavorites: this.initFavorites,
+        setIsLoading: this.setIsLoading
       }}>
         { this.props.children }
       </MovieContext.Provider>
