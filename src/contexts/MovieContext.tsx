@@ -2,6 +2,8 @@ import React, { Component, createContext } from 'react';
 import { MovieInfo } from 'utils/apiHandler';
 
 type movieContext = {
+  isModalOpen: false,
+  currentMovie: MovieInfo,
   movies: MovieInfo[],
   searchFilter: string,
   availableGenres: string[],
@@ -9,10 +11,26 @@ type movieContext = {
   setSearchFilter: (value: string) => void,
   getSearchFilter: () => void,
   toggleGenre: (name: string) => void,
-  updateMovieList: (data: MovieInfo[]) => void
+  updateMovieList: (data: MovieInfo[]) => void,
+  openModal: (id: string) => void,
+  closeModal: () => void
+}
+
+const initialMovie: MovieInfo = {
+  id: '',
+  name: '',
+  description: '',
+  artist: '',
+  category: '',
+  imageUri: '',
+  detailsPage: '',
+  releaseDate: '',
+  rights: ''
 }
 
 let initialState: movieContext = {
+  isModalOpen: false,
+  currentMovie: initialMovie,
   movies: [],
   searchFilter: '',
   availableGenres: [],
@@ -20,7 +38,9 @@ let initialState: movieContext = {
   setSearchFilter: () => { },
   getSearchFilter: () => { },
   toggleGenre: () => { },
-  updateMovieList: () => { }
+  updateMovieList: () => { },
+  openModal: () => { },
+  closeModal: () => { }
 }
 
 export const MovieContext = createContext<movieContext>({
@@ -56,6 +76,17 @@ class MovieContextProvider extends Component {
     this.setState({ ...this.state, availableGenres: genresSet});
   }
 
+  openModal = (id: string) => {
+    const movieInfo = this.state.movies.find(x => x.id === id);
+
+    if (!movieInfo) return;
+
+    this.setState({ ...this.state, currentMovie: movieInfo, isModalOpen: true });
+  }
+
+  closeModal = () => {
+    this.setState({ ...this.state, isModalOpen: false });
+  }
 
   render() {
     return (
@@ -64,7 +95,9 @@ class MovieContextProvider extends Component {
         setSearchFilter: this.setSearchFilter,
         getSearchFilter: this.getSearchFilter,
         toggleGenre: this.toggleGenre,
-        updateMovieList: this.updateMovieList
+        updateMovieList: this.updateMovieList,
+        openModal: this.openModal,
+        closeModal: this.closeModal
       }}>
         { this.props.children }
       </MovieContext.Provider>

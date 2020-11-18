@@ -2,9 +2,10 @@ import React from 'react';
 
 import Footer from 'components/Footer';
 import Home from 'views/Home';
+import Modal from 'components/Modal';
+import MovieContextProvider from 'contexts/MovieContext';
 import TopMenu from 'components/TopMenu';
 import TopMenuContextProvider from 'contexts/TopMenuContext';
-import MovieContextProvider from 'contexts/MovieContext';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <MovieContextProvider>
         <div className="App">
           <TopMenu />
+          <Modal />
           <Home />
           <Footer />
         </div>

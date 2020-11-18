@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './MovieSlider.scss';
 
 import { Swiper, Slide } from 'react-dynamic-swiper';
@@ -8,12 +8,15 @@ import { ReactComponent as HeartIcon } from 'svg/icons/HeartIcon.svg';
 import { ReactComponent as ZoomIcon } from 'svg/icons/ZoomIcon.svg';
 
 import { MovieInfo } from 'utils/apiHandler';
+import { MovieContext } from 'contexts/MovieContext';
 
 type Props = {
   movies: MovieInfo[]
 }
 
 const MovieSlider: React.FC<Props> = ({ movies }) => {
+  const { openModal } = useContext(MovieContext);
+
   return (
     <div className="MovieSlider">
       <Swiper
@@ -91,7 +94,7 @@ const MovieSlider: React.FC<Props> = ({ movies }) => {
         {movies.map(movie => (
           <Slide key={movie.id}>
             <div className="MovieSlider__card" style={{ backgroundImage: `url(${movie.imageUri})` }}>
-              <div className="details-prompt">
+              <div onClick={ () => openModal(movie.id) } className="details-prompt">
                 <ZoomIcon />
                 <HeartIcon />
               </div>
