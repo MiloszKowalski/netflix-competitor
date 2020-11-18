@@ -49,7 +49,7 @@
 }
 
 @media (max-width: 1024px) {
-  &.Navigation {
+  .TopMenu__navigation {
     &__list {
       @apply fixed;
       margin: 0;
