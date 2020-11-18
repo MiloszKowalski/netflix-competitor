@@ -1,23 +1,25 @@
 import React from 'react';
 import './MovieSlider.scss';
 
-import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
+import { Swiper, Slide } from 'react-dynamic-swiper';
+import 'react-dynamic-swiper/lib/styles.css'
 
-SwiperCore.use([Navigation, Pagination, A11y]);
+import { ReactComponent as HeartIcon } from 'svg/icons/HeartIcon.svg';
+import { ReactComponent as ZoomIcon } from 'svg/icons/ZoomIcon.svg';
 
-const MovieSlider: React.FC = () => {
+import { MovieInfo } from 'utils/apiHandler';
+
+type Props = {
+  movies: MovieInfo[]
+}
+
+const MovieSlider: React.FC<Props> = ({ movies }) => {
   return (
     <div className="MovieSlider">
       <Swiper
-        speed={500}
-        navigation
-        pagination
-        breakpoints={{
+      swiperOptions={{
+        speed: 500,
+        breakpoints: {
           0: {
             slidesPerView: 1.25,
             slidesPerGroup: 1,
@@ -42,7 +44,6 @@ const MovieSlider: React.FC = () => {
             slidesOffsetAfter: window.innerWidth / 2 / 2,
             pagination: false
           },
-          // when window width is >= 768px
           768: {
             slidesPerView: 4,
             slidesPerGroup: 3,
@@ -73,18 +74,30 @@ const MovieSlider: React.FC = () => {
             pagination: { clickable: true },
             slidesOffsetBefore: window.innerWidth / 7 / 2,
             slidesOffsetAfter: window.innerWidth / 7 / 2
+          },
+          1920: {
+            slidesPerView: 7,
+            slidesPerGroup: 6,
+            spaceBetween: 45,
+            pagination: { clickable: true },
+            slidesOffsetBefore: window.innerWidth / 7 / 2,
+            slidesOffsetAfter: window.innerWidth / 7 / 2
           }
-        }}
+        }
+      }}
+      navigation
+      pagination
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {movies.map(movie => (
+          <Slide key={movie.id}>
+            <div className="MovieSlider__card" style={{ backgroundImage: `url(${movie.imageUri})` }}>
+              <div className="details-prompt">
+                <ZoomIcon />
+                <HeartIcon />
+              </div>
+            </div>
+          </Slide>
+        ))}
       </Swiper>
     </div>
   )

@@ -1,14 +1,25 @@
 .MovieList {
   width: 100%;
-  height: 600px;
-  padding-top: 100px;
+  height: 680px;
   overflow: hidden;
   background: linear-gradient(transparent 0%, var(--main-dark) 35%);
 
+  @media screen and (min-width: 1920px) {
+    padding-top: 100px;
+  }
+
   & h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--main-light);
-    margin: 20px 0;
-    margin-left: 10%;
+    margin: 45px 0;
+    margin-left: 7.5%;
+
+    &::before {
+      content: url('/svg/icons/RocketIcon.svg');
+      display: inline-block;
+      margin-right: 15px;
+      position: relative;
+      top: 3px;
+    }
   }
 }
