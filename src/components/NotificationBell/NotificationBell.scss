@@ -1,7 +1,7 @@
 .NotificationBell {
   width: 24px;
   height: 24px;
-  margin: 25px;
+  margin: 10px;
   cursor: pointer;
   transition: transform 0.25s;
 
@@ -17,5 +17,9 @@
       stroke: #fff;
       fill: none;
     }
+  }
+
+  @media screen and (min-width: 281px) {
+    margin: 25px;
   }
 }

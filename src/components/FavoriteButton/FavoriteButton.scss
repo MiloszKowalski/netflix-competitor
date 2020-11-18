@@ -15,7 +15,10 @@
   }
 
   @media screen and (min-width: 1024px) {
-    @apply relative;
+    & {
+      @apply relative;
+    }
+
     top: 8px;
   }
 }

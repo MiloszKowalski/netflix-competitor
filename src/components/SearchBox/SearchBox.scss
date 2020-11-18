@@ -44,12 +44,12 @@
 
   &.expanded {
     & svg {
-      transform: translateX(calc(-20vw + 15px));
+      transform: translateX(calc(15px - 10vw));
     }
 
     & input {
       max-width: 60vw;
-      transform: translateX(-20vw);
+      transform: translateX(-10vw);
       border: 2px solid #323234;
       background: var(--very-dark);
       padding: 10px 15px;

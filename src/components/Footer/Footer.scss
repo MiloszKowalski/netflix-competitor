@@ -7,7 +7,7 @@
 
   &__navigation {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 40px;
     grid-template-areas: "logo" "one" "two" "three" "four";
     font-size: 0.85rem;
     line-height: 2.5;
@@ -63,6 +63,7 @@
 
   @media screen and (min-width: 480px) {
     &__navigation {
+      grid-gap: 40px;
       grid-template-areas: "logo logo" "one two" "three four";
     }
   }

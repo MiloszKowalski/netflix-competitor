@@ -27,10 +27,6 @@
       text-overflow: ellipsis;
       overflow: hidden;
 
-      &:hover {
-        background-color: var(--main-dark);
-      }
-
       &.active {
         background-color: var(--main-light);
         color: var(--very-dark);
@@ -48,7 +44,16 @@
   }
 
   @media screen and (min-width: 1024px) {
-    @apply relative;
+    & {
+      @apply relative;
+    }
+
+    &__button--option {
+      &:hover {
+        background-color: var(--main-dark);
+        color: var(--main-light);
+      }
+    }
 
     &__list {
       grid-template-columns: repeat(4, 1fr);

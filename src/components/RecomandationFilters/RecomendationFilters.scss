@@ -1,7 +1,10 @@
 .RecomendationFilters {
-  margin: 0 6%;
+  padding: 0 6%;
+  padding-bottom: 50px;
   @apply flex;
   @apply flex-col;
+  background: linear-gradient(var(--main-dark) 50%, transparent);
+  width: 100%;
 
   & > div {
     @apply flex;
@@ -11,12 +14,15 @@
 
   h2 {
     color: var(--main-light);
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-right: 15px;
   }
 
   @media screen and (min-width: 768px) {
-    @apply flex-row;
+    & {
+      @apply flex-row;
+    }
+
     justify-content: space-between;
 
     & > div {
@@ -25,6 +31,11 @@
   }
 
   @media screen and (min-width: 1024px) {
-    margin: 0 6%;
+    background: transparent;
+    padding: 0 6%;
+
+    & h2 {
+      font-size: 2rem;
+    }
   }
 }

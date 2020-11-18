@@ -1,10 +1,10 @@
 .MenuIcon {
   @apply block;
-  margin-right: 20px;
+  margin-right: 5px;
   cursor: pointer;
 
   &--open {
-    margin-right: 20px;
+    margin-right: 5px;
     cursor: pointer;
   }
 
@@ -27,6 +27,14 @@
 
     &:last-child {
       transform: translateY(-8px) rotate(45deg);
+    }
+  }
+
+  @media screen and (min-width: 321px) {
+    margin-right: 15px;
+
+    &--open {
+      margin-right: 15px;
     }
   }
 
