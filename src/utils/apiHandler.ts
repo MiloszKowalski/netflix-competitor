@@ -26,7 +26,7 @@ function convertToMovieType(data: any): MovieInfo[] {
       imageUri: x["im:image"].slice(-1)[0].label,
       detailsPage: x.id.label,
       releaseDate: x["im:releaseDate"].attributes.label,
-      rights: x.rights.label
+      rights: x.rights?.label || 'No copyright info provided.'
     }
 
     return movie;
